@@ -8,6 +8,7 @@ AGS_GameStageManager::AGS_GameStageManager()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	ActiveGameStage = nullptr;
 
 }
 
@@ -23,5 +24,17 @@ void AGS_GameStageManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+bool AGS_GameStageManager::GetActiveGameStageData(FGS_GameStageData& ActiveStageData)
+{
+	if (ActiveGameStage) {
+		ActiveStageData = ActiveGameStage->GetStageData();
+		return true;
+	}
+	else {
+		ActiveStageData = FGS_GameStageData();
+		return false;
+	}
 }
 

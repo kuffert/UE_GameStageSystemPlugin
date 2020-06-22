@@ -6,14 +6,32 @@
 #include "GameFramework/Actor.h"
 #include "GS_GameStage.generated.h"
 
+USTRUCT(Blueprintable)
+struct GAMESTAGESYSTEM_API FGS_GameStageData {
+
+	GENERATED_BODY()
+
+		float StageLength;
+	float TimeRemaining;
+	float TimePassed;
+};
+
+
 UCLASS(Abstract, Blueprintable)
 class GAMESTAGESYSTEM_API AGS_GameStage : public AActor
 {
 	GENERATED_BODY()
+
+private:
+	float StageLength = 0.f;
+	FName StageName = TEXT("");
 	
 public:	
 	// Sets default values for this actor's properties
 	AGS_GameStage();
+
+	// Builds a stage data struct from the current stage state.
+	FGS_GameStageData GetStageData();
 
 protected:
 	// Called when the game starts or when spawned

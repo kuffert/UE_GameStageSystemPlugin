@@ -11,6 +11,11 @@ AGS_GameStage::AGS_GameStage()
 
 }
 
+FGS_GameStageData AGS_GameStage::GetStageData()
+{
+	return FGS_GameStageData();
+}
+
 // Called when the game starts or when spawned
 void AGS_GameStage::BeginPlay()
 {

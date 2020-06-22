@@ -4,17 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "GS_GameStage.h"
 #include "GS_GameStageManager.generated.h"
 
-USTRUCT()
-struct GAMESTAGESYSTEM_API FGS_GameStageData {
-
-	GENERATED_BODY()
-
-	float StageLength;
-	float TimeRemaining;
-	float TimePassed;
-};
 
 UCLASS()
 class GAMESTAGESYSTEM_API AGS_GameStageManager : public AActor
@@ -32,5 +24,13 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	// Gets the active game stage's current data.
+	bool GetActiveGameStageData(FGS_GameStageData& ActiveStageData);
+
+private:
+	
+	UPROPERTY()
+	AGS_GameStage* ActiveGameStage;
 
 };

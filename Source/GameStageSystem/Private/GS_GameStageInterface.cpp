@@ -2,10 +2,6 @@
 
 
 #include "GS_GameStageInterface.h"
-#include "GS_GameStageManager.h"
+#include "GS_GameStage.h"
 
 // Add default functionality here for any IGS_GameStageInterface functions that are not pure virtual.
-
-FGS_GameStageData IGS_GameStageInterface::GetStageInfo() {
-	return FGS_GameStageData();
-}

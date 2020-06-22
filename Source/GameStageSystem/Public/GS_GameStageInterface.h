@@ -16,7 +16,7 @@ class UGS_GameStageInterface : public UInterface
 };
 
 /**
- * 
+ * Interface to be implemented by a Game State that uses the Game Stage system. 
  */
 class GAMESTAGESYSTEM_API IGS_GameStageInterface
 {
@@ -24,6 +24,7 @@ class GAMESTAGESYSTEM_API IGS_GameStageInterface
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	bool GetActiveGameStageData(FGS_GameStageData& ActiveStageData);
 
-	virtual FGS_GameStageData GetStageInfo();
 };
