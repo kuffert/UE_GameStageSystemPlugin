@@ -5,7 +5,20 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "GS_GameStage.h"
+#include "Engine/DataTable.h"
 #include "GS_GameStageManager.generated.h"
+
+USTRUCT(BlueprintType)
+struct GAMESTAGESYSTEM_API FGS_GameStageRow : public FTableRowBase {
+
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AGS_GameStage> StageClass;
+
+public:
+	FGS_GameStageRow() : StageClass(nullptr) {}
+};
 
 
 UCLASS()
@@ -27,6 +40,9 @@ public:
 
 	// Gets the active game stage's current data.
 	bool GetActiveGameStageData(FGS_GameStageData& ActiveStageData);
+
+	// Initialize this manager after it has been spawned.
+	void Initialize(UDataTable* GameStagesTable);
 
 private:
 	

@@ -11,9 +11,20 @@ struct GAMESTAGESYSTEM_API FGS_GameStageData {
 
 	GENERATED_BODY()
 
-		float StageLength;
-	float TimeRemaining;
-	float TimePassed;
+	UPROPERTY(BlueprintReadOnly)
+	float StageLength = 0.f;
+	UPROPERTY(BlueprintReadOnly)
+	float TimeRemaining = 0.f;
+	UPROPERTY(BlueprintReadOnly)
+	float TimePassed = 0.f;
+
+	FGS_GameStageData() {}
+
+	FGS_GameStageData(float stageLength) {
+		StageLength = stageLength;
+		TimeRemaining = stageLength;
+		TimePassed = 0.f;
+	}
 };
 
 
@@ -23,7 +34,10 @@ class GAMESTAGESYSTEM_API AGS_GameStage : public AActor
 	GENERATED_BODY()
 
 private:
+
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Stage Properties", meta = (AllowPrivateAccess = "true"))
 	float StageLength = 0.f;
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Stage Properties", meta = (AllowPrivateAccess = "true"))
 	FName StageName = TEXT("");
 	
 public:	
